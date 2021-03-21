@@ -1,10 +1,11 @@
 from django.urls import path,include
-from .views import ArticleList
+from .views import ArticleViewSet
 
 app_name='api'
 
 urlpatterns=[
 
-    path('',ArticleList.as_view(),name='list')
-    
+    path('',ArticleViewSet.as_view({'get':'list'}),name='list'),
+    path('<int:pk>',ArticleViewSet.as_view({'get':'retrieve'}),name='detail')
+
 ]
